@@ -42,27 +42,32 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
       {/* Animated background elements */}
-      <div className="fixed inset-0 bg-gradient-to-br from-indigo-50/40 via-white to-purple-50/40 -z-10" />
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-purple-400/10 via-transparent to-transparent -z-10" />
+      
+      {/* Animated orbs with new colors */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.2, scale: 1 }}
+        animate={{ opacity: 0.15, scale: 1 }}
         transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-        className="fixed top-[20%] left-[10%] w-[500px] h-[500px] bg-blue-200/20 rounded-full blur-3xl -z-10"
-      />
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.2, scale: 1 }}
-        transition={{ duration: 2.5, repeat: Infinity, repeatType: "reverse", delay: 0.5 }}
-        className="fixed top-[40%] right-[15%] w-[400px] h-[400px] bg-purple-200/20 rounded-full blur-3xl -z-10"
+        className="fixed top-[10%] left-[5%] w-[500px] h-[500px] bg-cyan-500/30 rounded-full blur-3xl -z-10"
       />
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 0.15, scale: 1 }}
-        transition={{ duration: 3, repeat: Infinity, repeatType: "reverse", delay: 1 }}
-        className="fixed bottom-[20%] left-[30%] w-[300px] h-[300px] bg-indigo-200/20 rounded-full blur-3xl -z-10"
+        transition={{ duration: 2.5, repeat: Infinity, repeatType: "reverse", delay: 0.5 }}
+        className="fixed top-[40%] right-[15%] w-[400px] h-[400px] bg-purple-500/30 rounded-full blur-3xl -z-10"
       />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 0.1, scale: 1 }}
+        transition={{ duration: 3, repeat: Infinity, repeatType: "reverse", delay: 1 }}
+        className="fixed bottom-[20%] left-[30%] w-[300px] h-[300px] bg-pink-500/30 rounded-full blur-3xl -z-10"
+      />
+      
+      {/* Animated grid background */}
+      <div className="fixed inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] -z-10" />
       
       <DesktopNav isOpen={isSidebarOpen} onToggle={toggleSidebar} />
       
@@ -133,12 +138,12 @@ function App() {
       </motion.div>
 
       {/* Decorative elements */}
-      <div className="fixed top-0 right-0 w-full h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" />
+      <div className="fixed top-0 right-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 opacity-80" />
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: [0.5, 0.3, 0.5] }}
+        animate={{ opacity: [0.8, 0.4, 0.8] }}
         transition={{ duration: 5, repeat: Infinity }}
-        className="fixed bottom-0 left-0 w-full h-1 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500"
+        className="fixed bottom-0 left-0 w-full h-1 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500"
       />
     </div>
   );
