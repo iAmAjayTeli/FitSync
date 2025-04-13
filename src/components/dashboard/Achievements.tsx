@@ -67,7 +67,7 @@ export const Achievements = () => {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-gray-900">
+        <h2 className="text-xl font-semibold text-white">
           Achievements
         </h2>
         <span className="text-sm text-gray-500">

@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
 import { motion } from 'framer-motion';
 import { user } from '../../data/mockData';
-import { BellIcon, UserCircleIcon, SunIcon, MoonIcon, Bars3Icon } from '@heroicons/react/24/outline';
+import { BellIcon, SunIcon, MoonIcon, Bars3Icon } from '@heroicons/react/24/outline';
+import { ProfileMenu } from './ProfileMenu';
 
 interface HeaderProps {
   toggleSidebar: () => void;
@@ -107,14 +108,7 @@ export const Header = ({ toggleSidebar }: HeaderProps) => {
               <p className="text-xs text-slate-400">Local Time</p>
             </div>
 
-            <motion.button
-              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-600/50 transition-colors"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <UserCircleIcon className="h-6 w-6 text-cyan-400" />
-              <span className="text-slate-300 hover:text-white">Profile</span>
-            </motion.button>
+            <ProfileMenu />
           </div>
         </div>
       </div>
