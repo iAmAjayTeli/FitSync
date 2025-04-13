@@ -24,7 +24,7 @@ export const DesktopNav = ({ isOpen, onToggle }: DesktopNavProps) => {
   return (
     <>
       <AnimatePresence mode="wait">
-        {!isOpen ? (
+        {!isOpen && (
           <motion.button
             key="menu-button"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -48,22 +48,6 @@ export const DesktopNav = ({ isOpen, onToggle }: DesktopNavProps) => {
               Menu
             </motion.span>
           </motion.button>
-        ) : (
-          <motion.button
-            key="close-button"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            whileHover={{ scale: 1.05, rotate: 90 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={onToggle}
-            className="fixed left-6 top-6 p-3 bg-white rounded-xl shadow-lg text-gray-500 hover:text-red-500 transition-all duration-200 z-50 hidden md:block"
-            style={{
-              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
-            }}
-          >
-            <XMarkIcon className="w-6 h-6" />
-          </motion.button>
         )}
       </AnimatePresence>
 
@@ -77,7 +61,25 @@ export const DesktopNav = ({ isOpen, onToggle }: DesktopNavProps) => {
         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
         className={`hidden md:block fixed left-0 top-0 bottom-0 bg-white/95 border-r border-gray-100 shadow-lg backdrop-blur-lg overflow-hidden`}
       >
-        <div className="flex flex-col h-full p-6">
+        <div className="flex flex-col h-full p-6 relative">
+          {/* Close button */}
+          <AnimatePresence>
+            {isOpen && (
+              <motion.button
+                key="close-button"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                whileHover={{ scale: 1.1, rotate: 90 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={onToggle}
+                className="absolute right-4 top-4 p-2 rounded-lg text-gray-400 hover:text-red-500 transition-colors duration-200"
+              >
+                <XMarkIcon className="w-5 h-5" />
+              </motion.button>
+            )}
+          </AnimatePresence>
+
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
