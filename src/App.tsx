@@ -9,7 +9,7 @@ import { DesktopNav } from './components/layout/DesktopNav';
 import { WorkoutStreak } from './components/dashboard/WorkoutStreak';
 import { UpcomingWorkouts } from './components/dashboard/UpcomingWorkouts';
 import { NutritionTips } from './components/dashboard/NutritionTips';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -72,11 +72,17 @@ function App() {
       <DesktopNav isOpen={isSidebarOpen} onToggle={toggleSidebar} />
       
       <motion.div 
-        className="md:pl-0"
+        className="md:pl-0 w-full"
         animate={{
-          paddingLeft: isSidebarOpen ? '18rem' : '0rem'
+          paddingLeft: isSidebarOpen ? '18rem' : '0rem',
+          x: isSidebarOpen ? '20px' : '0px'
         }}
-        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+        transition={{ 
+          type: "spring",
+          stiffness: 400,
+          damping: 40,
+          duration: 0.5
+        }}
       >
         <Header toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
         

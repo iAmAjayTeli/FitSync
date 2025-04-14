@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   HomeIcon,
   ChartBarIcon,
@@ -26,17 +26,26 @@ export const DesktopNav = ({ isOpen, onToggle }: DesktopNavProps) => {
     <>
       <motion.nav
         className="fixed top-0 left-0 bottom-0 w-72 bg-[#2d2b42] z-40 shadow-xl"
-        initial={{ x: "-100%" }}
-        animate={{ x: isOpen ? 0 : "-100%" }}
-        transition={{ type: "spring", bounce: 0.2 }}
+        initial={{ x: "-100%", opacity: 0 }}
+        animate={{ 
+          x: isOpen ? 0 : "-100%",
+          opacity: isOpen ? 1 : 0,
+          transition: {
+            type: "spring",
+            stiffness: 400,
+            damping: 40,
+            duration: 0.5
+          }
+        }}
       >
         <div className="relative h-full">
           <div className="relative p-6 h-full flex flex-col">
             <div className="flex justify-between items-center mb-8">
               <motion.h1 
                 className="text-2xl font-bold text-white"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
               >
                 FitSync
               </motion.h1>
@@ -56,8 +65,6 @@ export const DesktopNav = ({ isOpen, onToggle }: DesktopNavProps) => {
                   key={item.label}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
                   transition={{ 
                     delay: index * 0.1,
                     type: "spring",
@@ -69,6 +76,8 @@ export const DesktopNav = ({ isOpen, onToggle }: DesktopNavProps) => {
                       ? 'bg-[#8b5cf6] text-white shadow-lg hover:bg-[#9d6ef7]'
                       : 'bg-[#2C415F] text-white hover:bg-[#375270] hover:shadow-md'
                   }`}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   <item.icon className={`w-5 h-5 transition-transform duration-200 group-hover:scale-110`} />
                   <span className="relative z-10 text-sm font-medium">{item.label}</span>
@@ -77,7 +86,7 @@ export const DesktopNav = ({ isOpen, onToggle }: DesktopNavProps) => {
             </div>
 
             {/* Daily Progress Section */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}

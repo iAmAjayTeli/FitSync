@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { user } from '../../data/mockData';
 import { BellIcon, SunIcon, MoonIcon, Bars3Icon } from '@heroicons/react/24/outline';
 import { ProfileMenu } from './ProfileMenu';
 
 interface HeaderProps {
   toggleSidebar: () => void;
+  isSidebarOpen: boolean;
 }
 
-export const Header = ({ toggleSidebar }: HeaderProps) => {
+export const Header = ({ toggleSidebar, isSidebarOpen }: HeaderProps) => {
   const [currentTime, setCurrentTime] = useState(dayjs());
 
   useEffect(() => {
@@ -54,14 +55,21 @@ export const Header = ({ toggleSidebar }: HeaderProps) => {
     >
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center">
-          <motion.button
-            onClick={toggleSidebar}
-            className="p-2 rounded-lg bg-[#2C415F] text-white hover:bg-[#375270] transition-colors mr-6"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Bars3Icon className="w-6 h-6" />
-          </motion.button>
+          <AnimatePresence mode="wait">
+            {!isSidebarOpen && (
+              <motion.button
+                onClick={toggleSidebar}
+                className="p-2 rounded-lg bg-[#2C415F] text-white hover:bg-[#375270] transition-colors mr-6"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Bars3Icon className="w-6 h-6" />
+              </motion.button>
+            )}
+          </AnimatePresence>
 
           <div className="flex items-center gap-4">
             <motion.div 
