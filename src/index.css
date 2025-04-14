@@ -4,60 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-    font-family: 'Inter', system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  body {
-    @apply bg-gray-50 m-0 text-gray-900;
-  }
-}
-
 :root {
-  font-family: 'Inter', system-ui, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  background-color: #ffffff;
-  color: #111827;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 body {
   margin: 0;
-  min-width: 320px;
   min-height: 100vh;
-}
-
-a {
-  font-weight: 500;
-  color: #4f46e5;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #6366f1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-
-button:focus,
-button:focus-visible {
-  outline: 2px solid #4f46e5;
-  outline-offset: 2px;
+  background: linear-gradient(to bottom right, rgb(15, 23, 42), rgb(88, 28, 135));
 }

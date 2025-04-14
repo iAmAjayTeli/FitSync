@@ -18,9 +18,26 @@ export default {
           700: '#374151',
           800: '#1F2937',
           900: '#111827',
+        },
+        backgroundImage: {
+          'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         }
       }
     },
   },
   plugins: [],
+  safelist: [
+    'bg-blue-500',
+    'bg-orange-500',
+    'bg-green-500',
+    'bg-cyan-500',
+    'text-blue-500',
+    'text-orange-500',
+    'text-green-500',
+    'text-cyan-500',
+    {
+      pattern: /bg-(slate|purple|cyan|pink)-(400|500|600|700|800|900)/,
+      variants: ['hover', 'focus', 'active']
+    },
+  ]
 } 
