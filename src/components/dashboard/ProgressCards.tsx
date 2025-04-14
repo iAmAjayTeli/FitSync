@@ -13,12 +13,14 @@ const ProgressCard = ({
   target,
   icon: Icon,
   color,
+  progressColor,
 }: {
   title: string;
   value: number;
   target: number;
   icon: any;
   color: string;
+  progressColor: string;
 }) => {
   const progress = Math.min((value / target) * 100, 100);
 
@@ -35,7 +37,7 @@ const ProgressCard = ({
         <h3 className="font-medium text-gray-700">{title}</h3>
       </div>
 
-      <div className="flex items-end justify-between">
+      <div className="flex justify-between items-end">
         <div>
           <p className="text-2xl font-bold">{value.toLocaleString()}</p>
           <p className="text-sm text-gray-500">of {target.toLocaleString()}</p>
@@ -55,12 +57,11 @@ const ProgressCard = ({
                 a 15.9155 15.9155 0 0 1 0 31.831
                 a 15.9155 15.9155 0 0 1 0 -31.831"
               fill="none"
-              stroke="currentColor"
+              stroke={progressColor}
               strokeWidth="3"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: progress / 100 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className={color.replace('bg-', 'text-')}
             />
           </svg>
           <div className="absolute inset-0 flex items-center justify-center">
@@ -81,6 +82,7 @@ export const ProgressCards = () => {
         target={goals.find(g => g.type === 'steps')?.target || 10000}
         icon={ChartBarIcon}
         color="bg-blue-500"
+        progressColor="#3b82f6"
       />
       <ProgressCard
         title="Calories"
@@ -88,6 +90,7 @@ export const ProgressCards = () => {
         target={goals.find(g => g.type === 'calories')?.target || 500}
         icon={FireIcon}
         color="bg-orange-500"
+        progressColor="#f97316"
       />
       <ProgressCard
         title="Active Minutes"
@@ -95,6 +98,7 @@ export const ProgressCards = () => {
         target={goals.find(g => g.type === 'activeMinutes')?.target || 60}
         icon={ClockIcon}
         color="bg-green-500"
+        progressColor="#22c55e"
       />
       <ProgressCard
         title="Water Intake"
@@ -102,6 +106,7 @@ export const ProgressCards = () => {
         target={8}
         icon={BeakerIcon}
         color="bg-cyan-500"
+        progressColor="#06b6d4"
       />
     </div>
   );
