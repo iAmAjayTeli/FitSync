@@ -4,6 +4,7 @@ export default {
     './index.html',
     './src/**/*.{js,ts,jsx,tsx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -27,17 +28,25 @@ export default {
   },
   plugins: [],
   safelist: [
-    'bg-blue-500',
-    'bg-orange-500',
-    'bg-green-500',
-    'bg-cyan-500',
-    'text-blue-500',
-    'text-orange-500',
-    'text-green-500',
-    'text-cyan-500',
     {
-      pattern: /bg-(slate|purple|cyan|pink)-(400|500|600|700|800|900)/,
+      pattern: /(bg|text|border)-(slate|purple|cyan|pink|blue|orange|green)-(400|500|600|700|800|900)/,
       variants: ['hover', 'focus', 'active']
     },
+    {
+      pattern: /(from|to|via)-(slate|purple|cyan|pink|blue|orange|green)-(400|500|600|700|800|900)/,
+      variants: ['hover', 'focus', 'active']
+    },
+    {
+      pattern: /gap-[0-9]+/,
+    },
+    'backdrop-blur-xl',
+    'opacity-50',
+    'opacity-80',
+    'opacity-90',
+    'w-full',
+    'h-full',
+    'rounded-xl',
+    'rounded-lg',
+    'rounded-full'
   ]
 } 
