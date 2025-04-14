@@ -91,6 +91,7 @@ function App() {
             variants={containerVariants}
           >
             <motion.div variants={itemVariants}>
+              <h2 className="text-xl font-semibold mb-4 text-white">Today's Progress</h2>
               <ProgressCards />
             </motion.div>
             

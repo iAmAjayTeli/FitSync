@@ -77,17 +77,21 @@ export const Header = ({ toggleSidebar }: HeaderProps) => {
               <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-slate-800 shadow-lg" />
             </motion.div>
             <div>
-              <motion.h1 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 flex items-center gap-2"
-              >
+              <div className="flex items-center gap-2">
                 {getGreetingIcon()}
-                <span>{getGreeting()}, {user.name}!</span>
-              </motion.h1>
-              <p className="text-slate-400 text-sm">
-                {currentTime.format('dddd, MMMM D, YYYY')}
-              </p>
+                <div>
+                  <motion.h1 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400"
+                  >
+                    {getGreeting()}, {user.name}!
+                  </motion.h1>
+                  <p className="text-slate-400 text-sm mt-0.5">
+                    {currentTime.format('dddd, MMMM D, YYYY')}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
