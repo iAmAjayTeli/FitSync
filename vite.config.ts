@@ -10,24 +10,4 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  css: {
-    modules: {
-      localsConvention: 'camelCase',
-      generateScopedName: '[local]_[hash:base64:5]',
-    },
-    postcss: {
-      plugins: [require('tailwindcss'), require('autoprefixer')],
-    },
-  },
-  build: {
-    sourcemap: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'ui-vendor': ['@headlessui/react', '@heroicons/react'],
-        },
-      },
-    },
-  },
 })
